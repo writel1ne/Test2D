@@ -10,13 +10,13 @@ public class Counter : MonoBehaviour
 	private bool _isRunning = true;
 	private int _time = 0;
 
-	void Start()
+	private void Start()
 	{
 		_coroutine = StartCoroutine(UpdateCounter());
 		Debug.Log("Запуск");
 	}
 
-	void Update()
+	private void Update()
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -37,7 +37,7 @@ public class Counter : MonoBehaviour
 		}
 	}
 
-	IEnumerator UpdateCounter()
+	private IEnumerator UpdateCounter()
 	{
 		while (true)
 		{

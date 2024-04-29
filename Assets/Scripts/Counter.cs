@@ -1,10 +1,10 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class Counter : MonoBehaviour
 {
-	[SerializeField] private TMPro.TMP_Text _TextMeshPro;
-
+	private TMPro.TMP_Text _TextMeshPro;
 	private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
 	private Coroutine _coroutine;
 	private bool _isRunning = true;
@@ -12,6 +12,7 @@ public class Counter : MonoBehaviour
 
 	private void Start()
 	{
+		_TextMeshPro = GetComponent<TMPro.TMP_Text>();
 		_coroutine = StartCoroutine(UpdateCounter());
 		Debug.Log("Запуск");
 	}

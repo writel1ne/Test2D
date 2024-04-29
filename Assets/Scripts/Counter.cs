@@ -5,7 +5,7 @@ using UnityEngine;
 public class Counter : MonoBehaviour
 {
 	private TMPro.TMP_Text _TextMeshPro;
-	private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
+	private WaitForSeconds _delay = new WaitForSeconds(0.5f);
 	private Coroutine _coroutine;
 	private bool _isRunning = true;
 	private int _time = 0;
@@ -44,7 +44,7 @@ public class Counter : MonoBehaviour
 		{
 			_time += 1;
 			_TextMeshPro.text = _time.ToString();
-			yield return _waitForSeconds;
+			yield return _delay;
 		}
 	}
 }

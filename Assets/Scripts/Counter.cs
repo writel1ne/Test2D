@@ -27,11 +27,11 @@ public class Counter : MonoBehaviour
 					StopCoroutine(_coroutine);
 					Debug.Log("Остановка");
 					break;
+
 				case false:
 					_coroutine = StartCoroutine(UpdateCounter());
 					Debug.Log("Запуск");
 					break;
-
 			}
 
 			_isRunning = !_isRunning;

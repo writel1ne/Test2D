@@ -7,7 +7,7 @@ public class Counter : MonoBehaviour
 	private TMP_Text _textMeshPro;
 	private WaitForSeconds _delay = new WaitForSeconds(0.5f);
 	private Coroutine _coroutine;
-	private bool _isRunning = true;
+	private bool _coroutineIsRunning = true;
 	private int _time = 0;
 
 	private void Start()
@@ -21,7 +21,7 @@ public class Counter : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
-			if (_isRunning)
+			if (_coroutineIsRunning)
 			{
 				StopCoroutine(_coroutine);
 				Debug.Log("Остановка");
@@ -32,7 +32,7 @@ public class Counter : MonoBehaviour
 				Debug.Log("Запуск");
 			}
 
-			_isRunning = !_isRunning;
+			_coroutineIsRunning = !_coroutineIsRunning;
 		}
 	}
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Counter : MonoBehaviour
 {
-	private TMPro.TMP_Text _TextMeshPro;
+	private TMP_Text _textMeshPro;
 	private WaitForSeconds _delay = new WaitForSeconds(0.5f);
 	private Coroutine _coroutine;
 	private bool _isRunning = true;
@@ -12,7 +12,7 @@ public class Counter : MonoBehaviour
 
 	private void Start()
 	{
-		_TextMeshPro = GetComponent<TMPro.TMP_Text>();
+		_textMeshPro = GetComponent<TMP_Text>();
 		_coroutine = StartCoroutine(UpdateCounter());
 		Debug.Log("Запуск");
 	}
@@ -21,17 +21,15 @@ public class Counter : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
-			switch (_isRunning)
+			if (_isRunning)
 			{
-				case true:
-					StopCoroutine(_coroutine);
-					Debug.Log("Остановка");
-					break;
-
-				case false:
-					_coroutine = StartCoroutine(UpdateCounter());
-					Debug.Log("Запуск");
-					break;
+				StopCoroutine(_coroutine);
+				Debug.Log("Остановка");
+			}
+			else
+			{
+				_coroutine = StartCoroutine(UpdateCounter());
+				Debug.Log("Запуск");
 			}
 
 			_isRunning = !_isRunning;
@@ -40,10 +38,10 @@ public class Counter : MonoBehaviour
 
 	private IEnumerator UpdateCounter()
 	{
-		while (true)
+		while (enabled)
 		{
-			_time += 1;
-			_TextMeshPro.text = _time.ToString();
+			_time++;
+			_textMeshPro.text = _time.ToString();
 			yield return _delay;
 		}
 	}
